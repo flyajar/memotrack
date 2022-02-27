@@ -64,27 +64,26 @@
             </div>
         </section>
 
-
-
         <section class="text-gray-600 body-font bg-white">
             <div class="container px-5 py-24 mx-auto">
                 <div class="flex flex-wrap -mx-4 -my-8">
-                    <div class="py-8 px-4 lg:w-1/3" v-for="post in $page.props.posts">
-                        <div class="h-full flex items-start">
+                    <div class="py-8 px-4 lg:w-1/3" v-for="post in posts.data">
+                        <div class="h-full flex items-start bg-gray-100 p-10 shadow-lg rounded">
                             <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
-                                <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">{{ post.month }}</span>
+                                <span class="text-gray-500 pb-2 mb-2 border-b-2 border-pink-500">{{ post.month }}</span>
                                 <span class="font-medium text-lg text-gray-800 title-font leading-none">{{ post.day }}</span>
                             </div>
                             <div class="flex-grow pl-6">
-                                <h2 class="tracking-widest text-xs title-font font-medium text-red-500 mb-1">CATEGORY</h2>
-                                <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ post.title }}</h1>
+                                <h2 class="text-xl title-font font-medium text-pink-600 mb-1">{{ post.title }}</h2>
                                 <p class="leading-relaxed mb-5">{{ post.content }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <pagination :links="posts.meta.links" />
             </div>
         </section>
+
 
 
     </BreezeAuthenticatedLayout>
@@ -94,12 +93,17 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3'
 import { useForm } from '@inertiajs/inertia-vue3'
+import Pagination from "@/Components/Pagination";
 
 export default {
     components: {
         Head,
+        Pagination,
     },
     layout: BreezeAuthenticatedLayout,
+    props: {
+        posts: Object
+    },
     setup () {
         const form = useForm({
             title: null,

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Resources\PostCollection;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +21,10 @@ class PostController extends Controller
      */
     public function index()
     {
+        $posts = new PostCollection(Auth::user()->posts()->paginate(3));
+
         return Inertia::render('Posts/Index', [
-            'posts' => Post::query()->cursor()->map(function ($post) {
-                return [
-                    'title' => $post->title,
-                    'content' => $post->content,
-                    'month' => $post->created_at->format('M'),
-                    'day' => $post->created_at->day,
-                ];
-            }),
+            'posts' => $posts
         ]);
     }
 
