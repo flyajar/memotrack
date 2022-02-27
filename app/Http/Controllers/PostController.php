@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostCollection;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +27,6 @@ class PostController extends Controller
         ]);
     }
 
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -42,7 +39,7 @@ class PostController extends Controller
 
         Post::query()->create($data);
 
-        return Redirect::route('posts.index');
+        return Redirect::route('posts');
     }
 
     /**

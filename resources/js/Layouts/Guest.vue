@@ -9,8 +9,11 @@ import { Link } from '@inertiajs/inertia-vue3';
             <Link href="/">
                 <BreezeApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
             </Link>
-        </div>
 
+        </div>
+        <div class="text-center">
+            <h1 class="text-6xl text-pink-600 font-extrabold">Memotrack</h1>
+        </div>
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <slot />
         </div>

@@ -25,7 +25,7 @@
                         <form @submit.prevent="form.post('/posts', options)" :disabled="form.processing" class="space-y-4">
                             <div>
                                 <label class="sr-only" for="title">Title</label>
-                                <input v-model="form.title" class="w-full p-3 text-sm rounded-lg" placeholder="Title" type="text" id="title"/>
+                                <input v-model="form.title" class="w-full p-3 text-sm rounded-lg focus:border-pink-300 focus:ring focus:ring-pink-200" placeholder="Title" type="text" id="title"/>
                                 <div class="text-red-500" v-if="form.errors.title">{{ form.errors.title }}</div>
                             </div>
 
@@ -33,7 +33,7 @@
                                 <label class="sr-only" for="content">Content</label>
                                 <textarea
                                     v-model="form.content"
-                                    class="w-full p-3 text-sm border-gray-200 rounded-lg"
+                                    class="w-full p-3 text-sm border-gray-200 rounded-lg focus:border-pink-300 focus:ring focus:ring-pink-200"
                                     placeholder="Content"
                                     rows="8"
                                     id="Content"
@@ -66,6 +66,7 @@
 
         <section class="text-gray-600 body-font bg-white">
             <div class="container px-5 py-24 mx-auto">
+                <h1 class="text-2xl py-8 text-pink-600 text-bolder">Posts</h1>
                 <div class="flex flex-wrap -mx-4 -my-8">
                     <div class="py-8 px-4 lg:w-1/3" v-for="post in posts.data">
                         <div class="h-full flex items-start bg-gray-100 p-10 shadow-lg rounded">
